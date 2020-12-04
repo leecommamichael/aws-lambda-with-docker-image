@@ -199,7 +199,10 @@ To be able to push our images we need to login to ECR. We run an output (`$()`) 
 `ecr get-login`. (Yes, the `$` is intended).
 
 ```bash
+# For AWS CLIv1:
 $(aws ecr get-login --no-include-email --region eu-central-1)
+# For AWS CLIv2: 
+aws ecr get-login-password | docker login --username AWS --password-stdin ACCOUNT_NUMBER.dkr.ecr.REGION.amazonaws.com
 ```
 
 Next we need to `tag` / rename our previously created image to an ECR format. The format for this is
